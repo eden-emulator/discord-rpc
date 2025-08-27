@@ -37,18 +37,6 @@ execute_process(
 # new commit that fixes c++17
 set(RAPIDJSON_SHA 3b2441b87f99ab65f37b141a7b548ebadb607b96)
 
-find_file(RAPIDJSONTEST NAMES rapidjson rapidjson-${RAPIDJSON_SHA} PATHS ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty CMAKE_FIND_ROOT_PATH_BOTH)
-if (NOT RAPIDJSONTEST)
-    message("no rapidjson, download")
-    set(RJ_TAR_FILE ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/${RAPIDJSON_SHA}.tar.gz)
-    file(DOWNLOAD https://github.com/miloyip/rapidjson/archive/${RAPIDJSON_SHA}.tar.gz ${RJ_TAR_FILE})
-    execute_process(
-        COMMAND ${CMAKE_COMMAND} -E tar xzf ${RJ_TAR_FILE}
-        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty
-    )
-    file(REMOVE ${RJ_TAR_FILE})
-endif(NOT RAPIDJSONTEST)
-
 find_file(RAPIDJSON NAMES rapidjson rapidjson-${RAPIDJSON_SHA} PATHS ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty CMAKE_FIND_ROOT_PATH_BOTH)
 
 add_library(rapidjson STATIC IMPORTED ${RAPIDJSON})
