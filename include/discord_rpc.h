@@ -23,9 +23,16 @@
 extern "C" {
 #endif
 
+typedef enum DiscordStatusDisplayType {
+    DiscordStatusDisplayType_Name = 0,
+    DiscordStatusDisplayType_State = 1,
+    DiscordStatusDisplayType_Details = 2
+} DiscordStatusDisplayType;
+
 typedef struct DiscordRichPresence {
     const char* state;   /* max 128 bytes */
     const char* details; /* max 128 bytes */
+    DiscordStatusDisplayType status_display_type;
     int64_t startTimestamp;
     int64_t endTimestamp;
     const char* largeImageKey;  /* max 32 bytes */
