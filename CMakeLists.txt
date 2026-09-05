@@ -1,4 +1,10 @@
 cmake_minimum_required (VERSION 3.22)
+
+# for discord_register_osx.m
+if (APPLE)
+    enable_language(OBJC)
+endif(APPLE)
+
 project (DiscordRPC)
 
 include(GNUInstallDirs)
