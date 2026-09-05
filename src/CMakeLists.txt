@@ -84,6 +84,11 @@ if(UNIX)
         -Wpedantic
     )
 
+    if (APPLE)
+        target_compile_options(discord-rpc PRIVATE
+            $<$<COMPILE_LANGUAGE:OBJC,OBJCXX>:-fno-objc-msgsend-class-selector-stubs>)
+    endif()
+
     if (${WARNINGS_AS_ERRORS})
       target_compile_options(discord-rpc PRIVATE -Werror)
     endif (${WARNINGS_AS_ERRORS})
