@@ -84,7 +84,7 @@ if(UNIX)
         -Wpedantic
     )
 
-    if (APPLE)
+    if (APPLE AND CMAKE_C_COMPILER_ID MATCHES "Clang" AND CMAKE_C_COMPILER_VERSION VERSION_GREATER_EQUAL 23)
         target_compile_options(discord-rpc PRIVATE
             $<$<COMPILE_LANGUAGE:OBJC,OBJCXX>:-fno-objc-msgsend-class-selector-stubs>)
     endif()
